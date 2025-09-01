@@ -21,7 +21,7 @@ function SearchBar({ onQueryChange, onCitySelect }) {
             onCitySelect(query.trim().toLowerCase());
           }
         }}
-        className="w-[40vw] h-[7vh] px-4 border mx-[15px] border-[#4e847c] rounded-xl placeholder:font-inter placeholder:text-[#6c757d] placeholder:font-normal placeholder:text-[20px] placeholder:mx-[10px]"
+        className="w-[30vw] h-[7vh] px-4 border mx-[15px] border-[#4e847c] rounded-xl placeholder:font-inter placeholder:text-[#6c757d] placeholder:font-normal placeholder:text-[20px] placeholder:mx-[10px]"
       />
     </div>
   );

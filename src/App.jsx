@@ -52,10 +52,10 @@ function App() {
     <div className="flex h-[100vh]">
         <div
           className="flex-1 overflow-y-auto border-l border-[#4e847c] p-2.5 bg-[#edeff1]"
-        >
+      >
+        <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} />
           {filteredCenters.length === 0 ? (
           <div className="text-[#0A2540] text-[20px] font-medium font-inter text-2xl text-center my-[20px]">
-            Show Exam Centers
             </div>
           ) : (
             <ExamCenterList
@@ -65,11 +65,8 @@ function App() {
             />
           )}
         </div>
-        <div className="flex flex-col grow-[1]">
-          <div className="flex flex-row justify-between my-[20px]">
-            <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} /> 
-            <img src="https://examroom.ai/storage/logos/company_logo.svg" className="w-[250px] h-[60px] mx-[20px] flex justify-start" />
-          </div>
+        <div className="flex flex-col grow-[2]">
+          <img src="https://examroom.ai/storage/logos/company_logo.svg" className="w-[250px] h-[60px] mx-[20px] flex items-center my-[20px]" />
           <MapView center={mapCenter} markers={filteredCenters} focusedMarker={focusedCenter} />
         </div>
     </div>
