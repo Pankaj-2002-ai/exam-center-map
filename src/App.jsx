@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import MapView from "./components/MapView";
 import ExamCenterList from "./components/ExamCenterList";
@@ -14,8 +14,9 @@ function App() {
   );
 
   const filteredCenters = query
-    ? allCenters.filter(center => 
-        center.city.includes(query) || center.name.toLowerCase().includes(query)
+    ? allCenters.filter(center =>
+        center.city.includes(query) ||
+        center.name.toLowerCase().includes(query)
       )
     : [];
 
@@ -23,7 +24,7 @@ function App() {
     ? [focusedCenter.lat, focusedCenter.lng]
     : selectedCity
     ? [selectedCity.lat, selectedCity.lng]
-    : [20.5937, 78.9629];
+    : [20.5937, 78.9629]; // default India center
 
   const handleCitySelect = async (cityName) => {
     if (!cityName) return;
@@ -49,26 +50,32 @@ function App() {
   };
 
   return (
-    <div className="flex h-[100vh]">
-        <div
-          className="flex-1 overflow-y-auto border-l border-[#4e847c] p-2.5 bg-[#edeff1]"
-      >
+    <div className="flex flex-col md:flex-row h-screen">
+      <div className="w-full md:flex-1 overflow-y-auto border-t md:border-t-0 md:border-l border-[#4e847c] p-2.5 bg-[#edeff1]">
         <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} />
-          {filteredCenters.length === 0 ? (
+        {filteredCenters.length === 0 ? (
           <div className="text-[#0A2540] text-[20px] font-medium font-inter text-2xl text-center my-[20px]">
-            </div>
-          ) : (
-            <ExamCenterList
-              centers={filteredCenters}
-              onCenterClick={setFocusedCenter}
-              selectedCenter={focusedCenter}
-            />
-          )}
-        </div>
-        <div className="flex flex-col grow-[2]">
-          <img src="https://examroom.ai/storage/logos/company_logo.svg" className="w-[250px] h-[60px] mx-[20px] flex items-center my-[20px]" />
-          <MapView center={mapCenter} markers={filteredCenters} focusedMarker={focusedCenter} />
-        </div>
+          </div>
+        ) : (
+          <ExamCenterList
+            centers={filteredCenters}
+            onCenterClick={setFocusedCenter}
+            selectedCenter={focusedCenter}
+          />
+        )}
+      </div>
+      <div className="flex flex-col w-full md:grow-[2] md:w-auto bg-white">
+        <img
+          src="https://examroom.ai/storage/logos/company_logo.svg"
+          className="w-[250px] h-[60px] mx-auto md:mx-[20px] my-[20px]"
+          alt="ExamRoom Logo"
+        />
+        <MapView
+          center={mapCenter}
+          markers={filteredCenters}
+          focusedMarker={focusedCenter}
+        />
+      </div>
     </div>
   );
 }
