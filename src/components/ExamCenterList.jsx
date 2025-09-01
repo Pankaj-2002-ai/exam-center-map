@@ -6,7 +6,7 @@ function ExamCenterList({ centers, onCenterClick, selectedCenter }) {
   }
 
   return (
-    <div style={{ padding: 10 }}>
+    <div className="p-[10px]">
       <h3 className="text-[#0A2540] text-[20px] font-semibold font-inter">Exam Centers</h3>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {centers.map((center, i) => {
@@ -26,7 +26,7 @@ function ExamCenterList({ centers, onCenterClick, selectedCenter }) {
               `}
             >
               <div className="font-inter font-semibold text-[15px] text-[#0a2540]">{center.name}</div>
-              <div style={{ fontSize: 12, color: "#555" }}>
+              <div className="font-[15px] fomt-regular font-inter text-[#0a2540]">
                 Lat: {center.lat.toFixed(4)}, Lng: {center.lng.toFixed(4)}
               </div>
             </li>

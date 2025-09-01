@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import SearchBar from "./components/SearchBar";
 import MapView from "./components/MapView";
 import ExamCenterList from "./components/ExamCenterList";
@@ -49,26 +49,29 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      <div
-        className="flex-1 overflow-y-auto border-l border-[#4e847c] p-2.5 bg-[#edeff1]"
-      >
-        {filteredCenters.length === 0 ? (
-          <div className="text-[#0A2540] text-[20px] font-medium font-inter">
-            No exam centers found.
+    <div className="flex h-[100vh]">
+        <div
+          className="flex-1 overflow-y-auto border-l border-[#4e847c] p-2.5 bg-[#edeff1]"
+        >
+          {filteredCenters.length === 0 ? (
+          <div className="text-[#0A2540] text-[20px] font-medium font-inter text-2xl text-center my-[20px]">
+            Show Exam Centers
+            </div>
+          ) : (
+            <ExamCenterList
+              centers={filteredCenters}
+              onCenterClick={setFocusedCenter}
+              selectedCenter={focusedCenter}
+            />
+          )}
+        </div>
+        <div className="flex flex-col grow-[1]">
+          <div className="flex flex-row justify-between my-[20px]">
+            <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} /> 
+            <img src="https://examroom.ai/storage/logos/company_logo.svg" className="w-[250px] h-[60px] mx-[20px] flex justify-start" />
           </div>
-        ) : (
-          <ExamCenterList
-            centers={filteredCenters}
-            onCenterClick={setFocusedCenter}
-            selectedCenter={focusedCenter}
-          />
-        )}
-      </div>
-      <div style={{ flex: 3, display: "flex", flexDirection: "column" }}>
-        <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} />
-        <MapView center={mapCenter} markers={filteredCenters} focusedMarker={focusedCenter} />
-      </div>
+          <MapView center={mapCenter} markers={filteredCenters} focusedMarker={focusedCenter} />
+        </div>
     </div>
   );
 }
