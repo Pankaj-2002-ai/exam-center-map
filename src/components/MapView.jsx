@@ -29,7 +29,7 @@ function MapView({ center, zoom = 12, markers = [], focusedMarker }) {
     <MapContainer
       center={center}
       zoom={zoom}
-      className="h-[100%] w-[100%]"
+      className="h-[50vh] w-full bg-cover md:h-[100%] md:w-full"
       scrollWheelZoom={true}
     >
       <ChangeView center={center} zoom={zoom} />

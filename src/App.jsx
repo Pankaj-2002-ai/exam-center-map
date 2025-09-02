@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="flex flex-col md:flex-row h-screen">
-      <div className="w-full md:flex-1 overflow-y-auto border-t md:border-t-0 md:border-l border-[#4e847c] p-2.5 bg-[#edeff1]">
+      <div className="md:flex-1 overflow-y-auto border-t md:border-t-0 md:border-l border-[#4e847c] p-2.5 bg-[#edeff1]">
         <SearchBar onQueryChange={setQuery} onCitySelect={handleCitySelect} />
         {filteredCenters.length === 0 ? (
           <div className="text-[#0A2540] text-[20px] font-medium font-inter text-2xl text-center my-[20px]">
